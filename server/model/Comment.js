@@ -1,4 +1,4 @@
-class Post {
+class Comment {
     constructor(postId, id, name, email, body) {
         this.postId = postId
         this.id = id 
@@ -8,4 +8,4 @@ class Post {
     }    
 }
 
-module.exports = Post;
+module.exports = Comment;
