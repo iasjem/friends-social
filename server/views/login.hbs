@@ -1,0 +1,19 @@
+{{> header}} 
+    <main>
+        <form action="/login" method="POST">
+            <div class="form--vertical">
+                <div class="row">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" name="email" placeholder="Your Email" />
+                </div>
+                <div class="row">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" placeholder="Your Password" /> 
+                </div>
+                <div class="row">
+                    <input type="submit" value="Log in" />
+                </div>            
+            </div>
+        </form>
+    </main>    
+{{> footer}}

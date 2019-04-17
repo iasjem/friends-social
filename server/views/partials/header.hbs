@@ -11,3 +11,23 @@
     <script src="vendor/js/jquery-3.4.0.min.js"></script>
 </head>
 <body>
+    <header class="header__navbar">
+        <a class="a__brand-logo" href="/">Friends Social</a>
+        <nav>
+            <a href="/login">Login</a>
+            <form action="/search" method="GET">
+                <div class="form--horizontal"></div>
+                    <div class="block">
+                        <input id="searchByUser" type="text" placeholder="Find a friend" />
+                        <button id="btn__clear-input">
+                            <i class="material-icons">clear</i>
+                        </button>
+                    </div>
+                    <button id="btn__toggle-nav" class="btn__toggle-nav">
+                        <i class="material-icons">search</i>
+                    </button>
+                </div>
+            </form>
+            <a href="/logout">Log Out</a>
+        </nav>
+    </header>
