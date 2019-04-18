@@ -1,8 +1,8 @@
 const axios = require('axios');
 
-const findAllCommentsByPost = async (postID) => {
-    const response = await axios.get(`${process.env.API_BASE_URL}posts/1/comments?postId=${postID}`);
-    return response.data[0];
+const findAllCommentsByPost = async (postId) => {
+    const response = await axios.get(`${process.env.API_BASE_URL}posts/1/comments?postId=${postId}`);
+    return response.data;
 };
 
 module.exports = {
