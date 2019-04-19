@@ -17,3 +17,9 @@ const userSearchView = User => pretty(`
             <p class="username">@${User.username}</p>
         </div>
     `);
+
+module.exports = {
+    userHeroView,
+    userView,
+    userSearchView
+}
