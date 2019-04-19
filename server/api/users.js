@@ -10,7 +10,13 @@ const findUserById = async (id) => {
     return response.data[0];
 };
 
+const findUserByUsername = async (username) => {
+    const response = await axios.get(`${process.env.API_BASE_URL}users?id=${id}`);
+    return response.data[0];
+};
+
 module.exports = {
     findUserByEmail,
-    findUserById
+    findUserById,
+    findUserByUsername
 }
