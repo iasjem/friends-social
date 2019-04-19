@@ -1,13 +1,19 @@
 const api = require('../api/posts');
+const user = require('../api/users');
 const view = require('../view/post');
 const { errorView } = require('../view/error');
 const { Err } = require('../model/Error');
 let { Post } = require('../model/Post');
 
+const getDataFrom = (post) => {
+    let { userId, id, title, body } = post;
+    Post = { userId, id, title, body };
+    return Post;
+};
+
 const load = posts => {
-    return posts.map(post => {
-        let { userId, id, title, body } = post;
-        Post = { userId, id, title, body };
+    return posts.map((post) => {    
+        let Post = getDataFrom(post);
         return Post;
     });
 };
@@ -26,11 +32,13 @@ const userFeed = async (userId) => {
     return view.postListView(Posts);
 };
 
-const postPreview = async (postID) => {
-    const post = await api.findPostByID(postID);
+const postPreview = async (postId) => {
+    const post = await api.findPostByID(postId);
     if (!post) return errorView(Err.pageNotFound);
-    let { userId, title, body } = post;
-    Post = { userId, title, body };
+    let Post = getDataFrom(post);
+    let author = await user.findUserById(Post.userId);
+    if (!author) Post.author = "Unknown";
+    else Post.author = author.username;
     return view.postView(Post);
 };
 
