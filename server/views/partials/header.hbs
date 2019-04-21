@@ -12,13 +12,15 @@
 </head>
 <body>
     <div class="wrapper">
-        <header class="header__navbar container clearfix">
-            <div class="container">
+        <header class="header__navbar">
+            <div class="container clearfix">
                 <a class="a__brand-logo" href="/">Friends Social</a>
                 <nav class="clearfix">
                     {{#if userId}}
                         <a href="/user/{{userId}}">Profile</a>
-                        <a href="/">Logout</a>
+                        <form action="/user/logout" method="POST">
+                            <button class="btn a">Logout</button>
+                        </form>
                     {{/if}}
                 </nav>
             </div>

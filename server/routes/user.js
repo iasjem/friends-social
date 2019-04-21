@@ -10,6 +10,8 @@ router.get('/:id', async (req, res) => {
     res.render('user.hbs', { userId,  userViewController, postViewController });
 });
 
-router.get('/logout', (req, res) => res.redirect('/'));
+router.post('/logout', (req, res) => {
+    res.clearCookie('userId').redirect('/');
+});
 
 module.exports = router;

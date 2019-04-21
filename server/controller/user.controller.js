@@ -10,8 +10,8 @@ const load = user => {
     return User;
 };
 
-const login = async (email) => {
-    const user = await api.findUserByEmail(email);
+const login = async (id) => {
+    const user = await api.findUserById(id);
     if (!user) return errorView(Err.userNotFound);
     let User = load(user);
     return view.userHeroView(User);

@@ -5,14 +5,16 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const postViewController = await PostController.feed();
-    res.render('feed.hbs', { postViewController });
+    const u = req.cookies;
+    res.render('feed.hbs', { userId: u.userId, postViewController });
 });
 
 router.get('/:id', async (req, res) => {
     let postId = req.params.id;
     const postViewController = await PostController.postPreview(postId);
     const commentsViewController = await CommentController.postAllComments(postId);
-    res.render('post.hbs', { postViewController, commentsViewController })
+    const u = req.cookies;
+    res.render('post.hbs', { userId: u.userId, postViewController, commentsViewController })
 });
 
 module.exports = router;
