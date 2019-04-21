@@ -5,8 +5,9 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     try {
-        const postViewController = await PostController.feed();
         const u = req.cookies;
+        if (!u.userId) return res.redirect('/');    
+        const postViewController = await PostController.feed();
         res.render('feed.hbs', { userId: u.userId, postViewController });        
     } catch (e) {
         res.send(e);
@@ -15,10 +16,11 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
+        const u = req.cookies;
+        if (!u.userId) return res.redirect('/');        
         let postId = req.params.id;
         const postViewController = await PostController.postPreview(postId);
         const commentsViewController = await CommentController.postAllComments(postId);
-        const u = req.cookies;
         res.render('post.hbs', { userId: u.userId, postViewController, commentsViewController });        
     } catch (e) {
         res.send(e);
