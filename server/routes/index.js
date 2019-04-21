@@ -9,12 +9,11 @@ router.route('/')
     .post(async (req, res) => {
         const userViewController = await UserController.login(req.body.email);
         const user = await api.findUserByEmail(req.body.email);
-        const postViewController = await PostController.userFeed(user.id);
-        res.render('index.hbs', { userViewController, postViewController });
+        const postViewController = await PostController.feed();
+        res.render('index.hbs', { userId: user.id, userViewController, postViewController });
     });
 
-router.use('/user', require('./user.js'));
-
-router.use('/posts', require('./post.js'));
+router.use('/user', require('./user'));
+router.use('/posts', require('./post'));
 
 module.exports = router;

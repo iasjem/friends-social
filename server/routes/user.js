@@ -7,9 +7,9 @@ router.get('/:id', async (req, res) => {
     let userId = req.params.id;
     const userViewController = await UserController.profile(userId);
     const postViewController = await PostController.userFeed(userId);
-    res.render('user.hbs', { userViewController, postViewController });
+    res.render('user.hbs', { userId,  userViewController, postViewController });
 });
 
-router.post('/logout', (req, res) => res.redirect('/'));
+router.get('/logout', (req, res) => res.redirect('/'));
 
 module.exports = router;

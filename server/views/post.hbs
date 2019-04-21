@@ -1,8 +1,16 @@
 {{> header}} 
     <main>
         {{{ postViewController }}}
-        <div class="hidden">
+        <a id="btn__view-comments">View Comments</a>
+        <section id="section__comments" class="hidden">
             {{{ commentsViewController }}}
-        </div>
-    </main>    
+        </section>
+    </main>  
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#btn__view-comments").click(function(){
+                $("#section__comments").toggleClass("hidden");
+            });
+        });
+    </script>  
 {{> footer}}

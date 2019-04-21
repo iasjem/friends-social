@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const postViewController = await PostController.feed();
-    res.render('user.hbs', { postViewController });
+    res.render('feed.hbs', { postViewController });
 });
 
 router.get('/:id', async (req, res) => {

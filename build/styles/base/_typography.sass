@@ -1,14 +1,21 @@
 body  
     font-family: 'Lato', sans-serif
+    color: $text__color--default
 
 a 
     text-decoration: none
-    letter-spacing: 2px
+    color: $a__color--default
+    cursor: pointer
+    &:hover
+        color: $a__color__hover--default
 
 .btn 
-    +font-size(18px)
     font-weight: 700
     text-align: center
+    color: $btn__color--default
+
+h1, h2 
+    color: $heading__color--default
 
 h1
     +font-size(24px)
@@ -16,3 +23,9 @@ h1
 
 h2
     +font-size(20px)
+
+header
+    color: $header__color--default
+
+footer
+    color: $footer__color--default
